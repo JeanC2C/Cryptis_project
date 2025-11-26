@@ -413,9 +413,8 @@ def generer_cle_publique(cle_privee, nb_melanges=3):
         return []
     cle_pub = [0] * taille
     for _ in range(nb_melanges):
-        coef = random.randint(-2, 2)
-        if coef == 0:
-            coef = 1
+        mylist = [-1, 1]
+        coef = random.choice(mylist) 
         #randome du nombre de rotation
         rotation = random.randint(0, taille - 1)
         s_rotated = rotation_vecteur(cle_privee, rotation)
@@ -438,9 +437,8 @@ def chiffrer_message(message_trits, cle_publique, nb_termes=None):
     # même principe que la clé publique
     ap = [0] * taille
     for _ in range(nb_termes):
-        coef = random.randint(-1, 1)
-        if coef == 0:
-            coef = 1
+        mylist = [-1, 1]
+        coef = random.choice(mylist) 
         rotation = random.randint(0, taille - 1)
         p_rotated = rotation_vecteur(cle_publique, rotation)
         terme = multiplication_scalaire(coef, p_rotated)
